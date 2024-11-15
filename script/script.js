@@ -19,12 +19,19 @@ let leftClick = false;
 
 
 gridSquares.forEach(square => {
-    square.addEventListener("click" , event => {
+    square.addEventListener("mousedown" , event => {
         if (event.button == 0)
         {
             leftClick = true;
         }
     })
+
+    square.addEventListener("mouseup" , event => {
+        if (event.button == 0)
+        {
+            leftClick = false;
+        }
+    });
 
     square.addEventListener("mouseenter" , event => {
         if (event.target === square && leftClick == true)
