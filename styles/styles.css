@@ -1,0 +1,111 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&display=swap');
+/*------*/
+
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: aquamarine;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2
+{
+    font-family: "Matemasie", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: blue;
+}
+
+.control-panel
+{
+    width: 400px;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: .75rem;
+    padding: 15px;
+}
+
+.grid-size-btn,
+.clean-canva-btn
+{
+    width: 150px;
+    padding: 10px 20px 10px 20px;
+    text-wrap: nowrap;
+    background-color: #4A7DE3;
+    border: none;
+    border-radius: .55rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    outline: 3px solid transparent;
+    transition: ease-in all 0.5s;
+}
+
+.grid-size-btn:hover,
+.clean-canva-btn:hover
+{
+    outline: 3px solid aquamarine;
+    background-color: #3a61af;
+}
+
+.random-rgb-btn,
+.eraser-btn,
+.dark-theme-btn
+{
+    padding: 10px 15px 10px 15px;
+    border-radius: .45rem;
+    background-color: rgb(219, 213, 125);
+    border: none;
+    color: #FFFFFF;
+    font-weight: 700;
+    transition: ease-in all 0.5s;
+
+}
+
+.random-rgb-btn:hover,
+.eraser-btn:hover,
+.dark-theme-btn:hover
+{
+    background-color: rgb(163, 159, 99);
+}
+
+
+/* ---- GRID CSS ---- */
+
+.grid
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 470px;
+    height: 470px;
+    border-radius: .45rem;
+    outline: 8px solid gray;
+    gap: 0;
+    align-content: flex-start;
+}
+
+.normal-square
+{
+    width: 29.375px;
+    height: 29.375px;
+    background-color: white;
+    border: 1px solid gray;
+}
