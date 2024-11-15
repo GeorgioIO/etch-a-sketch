@@ -15,24 +15,21 @@ function createDefaultGrid(grid)
 const gridSquares = document.querySelectorAll(".normal-square");
 let leftClick = false;
 
+document.addEventListener("mousedown" , event => {
+    if (event.button === 0)
+    {
+        leftClick = true;
+    }
+})
 
-
+document.addEventListener("mouseup" , event => {
+    if (event.button === 0)
+    {
+        leftClick = false;
+    }
+});
 
 gridSquares.forEach(square => {
-    square.addEventListener("mousedown" , event => {
-        if (event.button == 0)
-        {
-            leftClick = true;
-        }
-    })
-
-    square.addEventListener("mouseup" , event => {
-        if (event.button == 0)
-        {
-            leftClick = false;
-        }
-    });
-
     square.addEventListener("mouseenter" , event => {
         if (event.target === square && leftClick == true)
         {
