@@ -13,14 +13,23 @@ function createDefaultGrid(grid)
 }
 
 const gridSquares = document.querySelectorAll(".normal-square");
+let leftClick = false;
+
+
+
 
 gridSquares.forEach(square => {
+    square.addEventListener("click" , event => {
+        if (event.button == 0)
+        {
+            leftClick = true;
+        }
+    })
+
     square.addEventListener("mouseenter" , event => {
-        console.log(event.target)
-        if (event.target === square)
+        if (event.target === square && leftClick == true)
         {
             event.target.style.backgroundColor = "black";
-            console.log(1);
         }
     })
 })
