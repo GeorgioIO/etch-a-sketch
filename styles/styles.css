@@ -86,6 +86,22 @@ h2
     background-color: rgb(163, 159, 99);
 }
 
+.active-rgb-btn
+{
+    background-color: rgb(163, 159, 99)
+}
+
+.active-eraser-btn
+{
+    background-color: rgb(163, 159, 99)
+}
+
+.active-dark-btn
+{
+    background-color: rgb(163, 159, 99)
+}
+
+
 
 /* ---- GRID CSS ---- */
 

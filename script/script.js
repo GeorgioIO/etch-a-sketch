@@ -2,7 +2,12 @@ const grid = document.querySelector(".grid");
 const setSizeBtn = document.querySelector(".grid-size-btn");
 const cleanCanvaBtn = document.querySelector(".clean-canva-btn");
 const randomRgbBtn = document.querySelector(".random-rgb-btn");
+const eraserBtn = document.querySelector(".eraser-btn");
+const darkThemeBtn = document.querySelector(".dark-theme-btn");
 let color = "black"
+let isRGB = false;
+let isEraser = false;
+let isDark = false;
 
 createDefaultGrid(grid);
 
@@ -14,7 +19,57 @@ giveSquaresHandlers(gridSquares);
 
 // RANDOM RGB HANDLER
 randomRgbBtn.addEventListener("click" , () => {
-    color = `rgb(${Math.floor(Math.random() * (255 - 1) + 1)} ,${Math.floor(Math.random() * (255 - 1) + 1)} , ${Math.floor(Math.random() * (255 - 1) + 1)})`
+    if(randomRgbBtn.classList.contains("active-rgb-btn"))
+    {
+        
+        randomRgbBtn.classList.remove("active-rgb-btn");
+        isRGB = false;
+    }
+    else
+    {
+        darkThemeBtn.classList.remove("active-dark-btn");
+        eraserBtn.classList.remove("active-eraser-btn");
+
+        randomRgbBtn.classList.add("active-rgb-btn");
+        isRGB = true;
+        isEraser = false;
+        isDark = false;
+    }
+});
+
+eraserBtn.addEventListener("click", () => {
+    if(eraserBtn.classList.contains("active-eraser-btn"))
+    {
+        eraserBtn.classList.remove("active-eraser-btn");
+        isEraser = false;
+    }
+    else
+    {
+        randomRgbBtn.classList.remove("active-rgb-btn");
+        darkThemeBtn.classList.remove("active-dark-btn");
+        eraserBtn.classList.add("active-eraser-btn");
+        isEraser = true;
+        isDark = false;
+        isRGB = false;
+    }
+});
+
+darkThemeBtn.addEventListener("click", () => {
+    if(darkThemeBtn.classList.contains("active-dark-btn"))
+    {
+        
+        darkThemeBtn.classList.remove("active-dark-btn");
+        isDark = false;
+    }
+    else
+    {
+        randomRgbBtn.classList.remove("active-rgb-btn");
+        eraserBtn.classList.remove("active-eraser-btn");
+        darkThemeBtn.classList.add("active-dark-btn");
+        isDark = true;
+        isRGB = false;
+        isEraser = false;
+    }
 });
 
 // CLEAN THE CANVA HANDLER
@@ -58,13 +113,29 @@ function giveSquaresHandlers(gridSquares)
         square.addEventListener("mousedown" , activePaint);
         square.addEventListener("mouseup" , inactivePaint);
         square.addEventListener("mouseenter" , () => {
+            if(isRGB)
+            {
+                color = `rgb(${Math.floor(Math.random() * 255) + 1} , ${Math.floor(Math.random() * 255) + 1} , ${Math.floor(Math.random() * 255) + 1})`
+            }
+            else if(isEraser)
+            {
+                color = "white";
+            }
+            else if(isDark)
+            {
+                color = "black";
+            }
+            else
+            {
+                color = "black";
+            }
             continousPainting(square , event , color);
         });
     });    
 }
 
 // FUNCTION TO CLEAN THE CANVAS
-function continousPainting(square , event)
+function continousPainting(square , event , color)
 {
     if (event.target === square && leftClick == true)
     {
